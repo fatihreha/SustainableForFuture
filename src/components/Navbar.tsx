@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -23,13 +22,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-200 fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+    <nav className="relative bg-white border-b-2 border-green-800 fixed w-full z-50">
+      <div className="absolute inset-0 bg-green-800 bg-opacity-10 z-0 w-full h-full pointer-events-none" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center relative z-10">
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="flex items-center">
-              <span className="text-2xl font-bold bg-blue-600 text-white px-3 py-1 rounded-md">
-                Global Goals
+            <Link to="/" className="flex items-center gap-2">
+              <img src="/icons/earth-leaf.png" alt="logo" className="w-8 h-8" />
+              <span className="text-2xl font-bold px-3 py-1 rounded-md" style={{ color: '#14532d' }}>
+                Sustainable for Future
               </span>
             </Link>
           </div>
@@ -51,7 +52,7 @@ const Navbar = () => {
                   <div className="px-2 pt-2 pb-3 space-y-1">
                     <Link
                       to="/"
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-bold"
                       onClick={toggleMenu}
                     >
                       Home
@@ -64,18 +65,11 @@ const Navbar = () => {
                       The 17 Goals
                     </Link>
                     <Link
-                      to="/about"
+                      to="/product-recommender"
                       className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                       onClick={toggleMenu}
                     >
-                      About
-                    </Link>
-                    <Link
-                      to="/resources"
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-                      onClick={toggleMenu}
-                    >
-                      Resources
+                      Sustainable Product Recommender
                     </Link>
                     <div className="mt-4">
                       <Button className="w-full" variant="default">
@@ -91,14 +85,14 @@ const Navbar = () => {
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
-                    <Link to="/" className="px-3 py-2 text-gray-700 hover:text-gray-900">
+                    <Link to="/" className="px-3 py-2 text-gray-700 hover:text-gray-900 font-bold">
                       Home
                     </Link>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
                     <NavigationMenuTrigger>The 17 Goals</NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="grid grid-cols-2 gap-3 p-4 w-[400px]">
+                      <div className="grid grid-cols-1 gap-3 p-4 w-[250px]">
                         <NavigationMenuLink asChild>
                           <Link 
                             to="/goals" 
@@ -108,26 +102,17 @@ const Navbar = () => {
                             <div className="text-xs text-gray-500">View all 17 sustainable development goals</div>
                           </Link>
                         </NavigationMenuLink>
-                        <NavigationMenuLink asChild>
-                          <Link 
-                            to="/goals/1" 
-                            className="block p-3 hover:bg-gray-100 rounded-md"
-                          >
-                            <div className="text-sm font-medium">Goal 1: No Poverty</div>
-                            <div className="text-xs text-gray-500">End poverty in all its forms</div>
-                          </Link>
-                        </NavigationMenuLink>
                       </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
-                    <Link to="/about" className="px-3 py-2 text-gray-700 hover:text-gray-900">
-                      About
+                    <Link to="/product-recommender" className="px-3 py-2 text-gray-700 hover:text-gray-900 font-semibold flex items-center gap-2">
+                      <span role="img" aria-label="cart">🛒</span> Sustainable Product Recommender
                     </Link>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
-                    <Link to="/resources" className="px-3 py-2 text-gray-700 hover:text-gray-900">
-                      Resources
+                    <Link to="/carbon-calculator" className="px-3 py-2 text-gray-700 hover:text-gray-900 font-bold">
+                      <span role="img" aria-label="footprint">👣</span> Carbon Calculator
                     </Link>
                   </NavigationMenuItem>
                 </NavigationMenuList>

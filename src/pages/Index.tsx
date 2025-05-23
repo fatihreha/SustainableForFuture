@@ -1,19 +1,26 @@
 import React from 'react';
-import Navbar from '@/components/Navbar';
 import GlobalGoalCard from '@/components/GlobalGoalCard';
 import { Button } from '@/components/ui/button';
 import { globalGoals } from '@/data/goals';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Navigation */}
-      <Navbar />
+  const navigate = useNavigate();
 
-      {/* Hero Section */}
-      <section className="pt-24 bg-gradient-to-br from-blue-800 to-blue-600 text-white px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto py-16 md:py-20 flex flex-col md:flex-row items-center">
+  return (
+    <div className="relative min-h-screen overflow-x-hidden">
+      {/* Background image and overlay for the whole page */}
+      <div className="fixed inset-0 w-full h-full -z-10" style={{
+        backgroundImage: `url('/images/children.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
+        <div className="absolute inset-0 bg-green-800 bg-opacity-75" />
+      </div>
+      {/* Main Content */}
+      <section className="p-0 m-0 text-white relative overflow-hidden z-10">
+        <div className="max-w-7xl mx-auto pt-8 py-16 md:py-20 flex flex-col md:flex-row items-center relative z-10">
           <div className="md:w-1/2 md:pr-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               The Global Goals for Sustainable Development
@@ -22,7 +29,7 @@ const Index = () => {
               17 goals to transform our world by 2030. The sustainable development goals address the global challenges we face, including poverty, inequality, climate change, and peace and justice.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50" onClick={() => navigate('/goals')}>
                 Learn About The Goals
               </Button>
               <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
@@ -32,14 +39,22 @@ const Index = () => {
           </div>
 
           <div className="md:w-1/2 mt-8 md:mt-0">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {globalGoals.map((goal) => (
-                <div 
-                  key={goal.id} 
-                  className="aspect-square rounded-md flex items-center justify-center text-white font-bold text-center p-1 text-xs sm:text-sm md:text-base" 
-                  style={{ backgroundColor: goal.color, minHeight: '60px', minWidth: '60px' }}
+                <div
+                  key={goal.id}
+                  className="w-32 h-32 min-w-[120px] min-h-[120px] aspect-square rounded-md flex flex-col items-center justify-center text-white font-bold text-center p-2 text-sm md:text-base"
+                  style={{ backgroundColor: goal.color }}
                 >
-                  <span>{goal.title}</span>
+                  {goal.icon && (
+                    <img
+                      src={goal.icon}
+                      alt={goal.title}
+                      className={`object-contain mb-2 ${goal.id === 8 || goal.id === 9 ? 'w-12 h-12' : 'w-16 h-16'}`}
+                      onError={e => { e.currentTarget.style.display = 'none'; }}
+                    />
+                  )}
+                  <span className="leading-tight mt-1">{goal.title}</span>
                 </div>
               ))}
             </div>
@@ -48,7 +63,7 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white z-10 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What are the Sustainable Development Goals?</h2>
@@ -60,7 +75,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="md:w-1/2">
               <img 
-                src="https://source.unsplash.com/photo-1605810230434-7631ac76ec81" 
+                src="/images/people-discussing-sdgs.jpg" 
                 alt="People discussing SDGs" 
                 className="rounded-lg shadow-lg w-full h-auto"
               />
@@ -82,7 +97,7 @@ const Index = () => {
       </section>
 
       {/* Goals Grid Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 z-10 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Explore All 17 Goals</h2>
@@ -106,7 +121,7 @@ const Index = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-blue-600 text-white">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-blue-600 text-white z-10 relative">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Join the Movement</h2>
           <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-8">
@@ -119,7 +134,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8 z-10 relative">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
@@ -165,3 +180,33 @@ const Index = () => {
 };
 
 export default Index;
+
+<style>
+{`
+.flip-card {
+  perspective: 800px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+`}
+</style>

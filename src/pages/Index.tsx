@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import GlobalGoalCard from '@/components/GlobalGoalCard';
@@ -26,23 +25,21 @@ const Index = () => {
               <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
                 Learn About The Goals
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-blue-700">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
                 Take Action
               </Button>
             </div>
           </div>
 
           <div className="md:w-1/2 mt-8 md:mt-0">
-            <div className="grid grid-cols-4 gap-2">
-              {globalGoals.slice(0, 8).map((goal) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+              {globalGoals.map((goal) => (
                 <div 
                   key={goal.id} 
-                  className="aspect-square rounded-md" 
-                  style={{ backgroundColor: goal.color }}
+                  className="aspect-square rounded-md flex items-center justify-center text-white font-bold text-center p-1 text-xs sm:text-sm md:text-base" 
+                  style={{ backgroundColor: goal.color, minHeight: '60px', minWidth: '60px' }}
                 >
-                  <div className="w-full h-full flex items-center justify-center text-white font-bold">
-                    {goal.id}
-                  </div>
+                  <span>{goal.title}</span>
                 </div>
               ))}
             </div>

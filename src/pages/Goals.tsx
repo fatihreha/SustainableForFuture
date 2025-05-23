@@ -14,7 +14,7 @@ const Goals = () => {
       <div className="absolute inset-0 bg-white bg-opacity-80 z-0" />
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-12 items-center justify-center relative z-10">
         <div className="md:w-1/2 text-left">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight uppercase">THE 17 GOALS</h1>
+          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight uppercase">THE 17 GOALS</h1>
         </div>
         <div className="md:w-1/2 text-lg text-gray-900 space-y-6">
           <p>We all know that we face big challenges in today's world: poverty, hunger, inequality and climate change are just some of the issues we need to address urgently.</p>

@@ -1,4 +1,4 @@
-# 7tepe Sustainable - UN Global Goals Web App
+# Sustainable for Future - UN Global Goals Web App
 
 ## Project Overview
 

@@ -14,7 +14,7 @@ const Partners = () => {
     {
       name: "Alp Kaya",
       role: "Development Lead",
-      linkedin: "#"
+      linkedin: "https://www.linkedin.com/in/alp-kaya-1181162b4/"
     },
     {
       name: "Ebru Tomris Aydoğan",

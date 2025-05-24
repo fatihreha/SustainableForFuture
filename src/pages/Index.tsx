@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import GlobalGoalCard from '@/components/GlobalGoalCard';
 import { Button } from '@/components/ui/button';
 import { globalGoals } from '@/data/goals';
@@ -143,9 +144,9 @@ const Index = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">About</h3>
               <ul className="space-y-2">
-                <li><a href="/goals" className="text-gray-600 hover:text-gray-900">The Goals</a></li>
-                <li><a href="/our-story" className="text-gray-600 hover:text-gray-900">Our Story</a></li>
-                <li><a href="/partners" className="text-gray-600 hover:text-gray-900">Partners</a></li>
+                <li><Link to="/goals" className="text-gray-600 hover:text-gray-900">The Goals</Link></li>
+                <li><Link to="/our-story" className="text-gray-600 hover:text-gray-900">Our Story</Link></li>
+                <li><Link to="/partners" className="text-gray-600 hover:text-gray-900">Partners</Link></li>
               </ul>
             </div>
             <div>
@@ -156,13 +157,13 @@ const Index = () => {
               <ul className="space-y-2">
                 <li><a href="https://www.un.org/sustainabledevelopment/news/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">News</a></li>
                 <li><a href="https://www.un.org/en/academic-impact/page/publications" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">Publications</a></li>
-                <li><a href="/media-library" className="text-gray-600 hover:text-gray-900">Media Library</a></li>
+                <li><Link to="/media-library" className="text-gray-600 hover:text-gray-900">Media Library</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Connect</h3>
               <ul className="space-y-2">
-                <li><a href="/partners" className="text-gray-600 hover:text-gray-900">Contact</a></li>
+                <li><Link to="/partners" className="text-gray-600 hover:text-gray-900">Contact</Link></li>
               </ul>
             </div>
           </div>

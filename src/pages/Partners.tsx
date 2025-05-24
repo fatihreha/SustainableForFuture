@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Partners = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const partners = [
     {
       name: "Fatih Reha Dişçi",

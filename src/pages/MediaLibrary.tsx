@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const images = [
   '/images/coil1.jpg',
@@ -11,6 +11,10 @@ const images = [
 const description = `Yeditepe University Faculty of Economics and Administrative Sciences collaborated with Lomonosov MSUBS in the COIL Climate Workshop held on April 30, 2025. Using the En-ROADS simulator, students explored the effects of human actions on climate change. The COIL Workshop on Climate Simulation was led by Assoc. Prof. Barış Gençer Baykan and Assoc. Prof. Ebru Tomris Aydoǧan.\n\nParticipants proposed policies that limited the temperature increase to +2°C. The workshop emphasized the role of sustainability, innovation, and good governance in tackling the climate crisis.🌍`;
 
 const MediaLibrary = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen relative py-16 px-4 sm:px-6 lg:px-8">
       {/* Background image and cream overlay */}

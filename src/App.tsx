@@ -26,6 +26,10 @@ import Goal14 from './pages/14';
 import Goal15 from './pages/15';
 import Goal16 from './pages/16';
 import Goal17 from './pages/17';
+import OurStory from './pages/OurStory';
+import Partners from './pages/Partners';
+import MediaLibrary from './pages/MediaLibrary';
+import Blueprint from './pages/Blueprint';
 
 const queryClient = new QueryClient();
 
@@ -66,6 +70,10 @@ const App = () => (
           <Route path="/goals/15" element={<Layout><Goal15 /></Layout>} />
           <Route path="/goals/16" element={<Layout><Goal16 /></Layout>} />
           <Route path="/goals/17" element={<Layout><Goal17 /></Layout>} />
+          <Route path="/our-story" element={<Layout><OurStory /></Layout>} />
+          <Route path="/partners" element={<Layout><Partners /></Layout>} />
+          <Route path="/media-library" element={<Layout><MediaLibrary /></Layout>} />
+          <Route path="/blueprint" element={<Layout><Blueprint /></Layout>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>

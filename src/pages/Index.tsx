@@ -88,7 +88,10 @@ const Index = () => {
               <p className="text-gray-700 mb-6">
                 The goals are interconnected – often the key to success on one will involve tackling issues more commonly associated with another.
               </p>
-              <Button className="flex items-center gap-2">
+              <Button 
+                className="flex items-center gap-2"
+                onClick={() => navigate('/blueprint')}
+              >
                 Read More <ArrowRight size={16} />
               </Button>
             </div>
@@ -121,57 +124,50 @@ const Index = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-blue-600 text-white z-10 relative">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-green-900 bg-opacity-75 text-white z-10 relative">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Join the Movement</h2>
-          <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-green-100 max-w-2xl mx-auto mb-8">
             Together we can build a better world. Take action today to help achieve the Sustainable Development Goals by 2030.
           </p>
-          <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
+          <Button size="lg" className="bg-white text-green-600 hover:bg-green-50" onClick={() => window.open('https://turkiye.un.org/tr/sdgs?afd_azwaf_tok=eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ0dXJraXllLnVuLm9yZyIsImV4cCI6MTc0ODEwNTM1NSwiaWF0IjoxNzQ4MTA1MzQ1LCJpc3MiOiJ0aWVyMS03Y2Y0NDg1ZDQ2LXJweGpiIiwic3ViIjoiODUuMTAwLjcwLjM0IiwiZGF0YSI6eyJ0eXBlIjoiaXNzdWVkIiwicmVmIjoiMjAyNTA1MjRUMTY0OTA1Wi0xN2NmNDQ4NWQ0NnJweGpiaEMxRlJBZXUxYzAwMDAwMDFlZzAwMDAwMDAwMDN2OHoiLCJiIjoiaUh4VVZMdHdXMUlKSlZXWjZYZjBUVkFscklSOXhlX0JpSVNWdkEtT2wtdyIsImgiOiJyNFNzZGtfN2x5S1ZsT0F1Z2ZRR1htNW42LWVrbXYyeEZzWTEyTURDb0xNIn19.qkM40vSw8xrI15pVar0N7roA2HFwjt3pwM8fDc_kOSRW54MMneUcDclLRlWlxGFZWv9zwlGl1GfmtonECt9krBQHXpee4ure3a_MVqPTDwfoVACDFoQICD-tejf5Rf3sLTOi8QCVR-AlnBEeSSwgp467vTtmOjUIkmNbzJ-78TAmQHr6Ml2I6CWOxzJ13XqOBCsYBpkVXQsmTh7H0qaE5On_noMKd9XhnuIiHkqkZFoZGzvRjK13_BOfwuaiN_hSorteQr1i3AQyrKV7LBoWWT751TLfmLZ8SNBOtElJFDJRB-avkH5WFjm2CWnTXCxrkvOouUTqUk6zQDwUKpaPfQ.WF3obl2IDtqgvMFRqVdYkD5s', '_blank')}>
             Get Involved
           </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8 z-10 relative">
+      <footer className="bg-white text-gray-900 py-12 px-4 sm:px-6 lg:px-8 z-10 relative">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
               <h3 className="text-lg font-semibold mb-4">About</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white">The Goals</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Our Story</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Partners</a></li>
+                <li><a href="/goals" className="text-gray-600 hover:text-gray-900">The Goals</a></li>
+                <li><a href="/our-story" className="text-gray-600 hover:text-gray-900">Our Story</a></li>
+                <li><a href="/partners" className="text-gray-600 hover:text-gray-900">Partners</a></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Take Action</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white">Individuals</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Companies</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Governments</a></li>
-              </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Resources</h3>
+              <h3 className="text-lg font-semibold mb-4">Stay Actual</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white">News</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Publications</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Media Library</a></li>
+                <li><a href="https://www.un.org/sustainabledevelopment/news/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">News</a></li>
+                <li><a href="https://www.un.org/en/academic-impact/page/publications" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">Publications</a></li>
+                <li><a href="/media-library" className="text-gray-600 hover:text-gray-900">Media Library</a></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Connect</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white">Contact</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Newsletter</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Social Media</a></li>
+                <li><a href="/partners" className="text-gray-600 hover:text-gray-900">Contact</a></li>
               </ul>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Global Goals. All rights reserved.</p>
+          <div className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
+            <p>&copy; {new Date().getFullYear()} Sustainable for Future. All rights reserved.</p>
           </div>
         </div>
       </footer>

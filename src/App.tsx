@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Goals from "./pages/Goals";
 import CarbonCalculator from "./pages/CarbonCalculator";
 import ProductRecommender from "./pages/ProductRecommender";
+import Chatbot from "./pages/Chatbot";
 import Goal1 from './pages/1';
 import Goal2 from './pages/2';
 import Goal3 from './pages/3';
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/goals" element={<Layout><Goals /></Layout>} />
           <Route path="/carbon-calculator" element={<Layout><CarbonCalculator /></Layout>} />
           <Route path="/product-recommender" element={<Layout><ProductRecommender /></Layout>} />
+          <Route path="/chatbot" element={<Layout><Chatbot /></Layout>} />
           <Route path="/goals/1" element={<Layout><Goal1 /></Layout>} />
           <Route path="/goals/2" element={<Layout><Goal2 /></Layout>} />
           <Route path="/goals/3" element={<Layout><Goal3 /></Layout>} />
@@ -74,7 +76,6 @@ const App = () => (
           <Route path="/partners" element={<Layout><Partners /></Layout>} />
           <Route path="/media-library" element={<Layout><MediaLibrary /></Layout>} />
           <Route path="/blueprint" element={<Layout><Blueprint /></Layout>} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>
       </BrowserRouter>

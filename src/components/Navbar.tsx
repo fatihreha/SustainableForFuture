@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import {
   NavigationMenu,
@@ -38,6 +38,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const isMobile = useIsMobile();
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Detect if on a goal page
   const goalMatch = location.pathname.match(/^\/goals\/(\d{1,2})$/);
@@ -130,7 +131,11 @@ const Navbar = () => {
                       Sustainable Product Recommender
                     </Link>
                     <div className="mt-4">
-                      <Button className="w-full" variant="default">
+                      <Button 
+                        className="w-full bg-green-900 text-white hover:bg-green-800 transition" 
+                        variant="default" 
+                        onClick={() => navigate('/chatbot')}
+                      >
                         Take Action
                       </Button>
                     </div>
@@ -175,7 +180,11 @@ const Navbar = () => {
                   </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
-              <Button className="ml-4" variant="default">
+              <Button 
+                className="ml-4 bg-green-900 text-white hover:bg-green-800 transition" 
+                variant="default" 
+                onClick={() => navigate('/chatbot')}
+              >
                 Take Action
               </Button>
             </div>

@@ -2,6 +2,102 @@ import React, { useState } from 'react';
 
 const PRODUCTS = [
   {
+    name: 'Organic Vegetables',
+    type: 'food',
+    features: ['organic', 'local', 'chemical-free', 'sustainable', 'fresh'],
+    price: 8,
+  },
+  {
+    name: 'Plant-based Meat',
+    type: 'food',
+    features: ['vegan', 'sustainable', 'protein-rich', 'low-carbon', 'healthy'],
+    price: 12,
+  },
+  {
+    name: 'Fair Trade Chocolate',
+    type: 'food',
+    features: ['fair-trade', 'organic', 'sustainable', 'ethical', 'vegan'],
+    price: 6,
+  },
+  {
+    name: 'Bulk Grains',
+    type: 'food',
+    features: ['zero-waste', 'sustainable', 'affordable', 'healthy', 'local'],
+    price: 4,
+  },
+  {
+    name: 'Raw Nuts',
+    type: 'food',
+    features: ['organic', 'sustainable', 'healthy', 'protein-rich', 'natural'],
+    price: 10,
+  },
+  {
+    name: 'Sustainable Seafood',
+    type: 'food',
+    features: ['sustainable', 'ocean-friendly', 'fresh', 'healthy', 'certified'],
+    price: 15,
+  },
+  {
+    name: 'Organic Tea',
+    type: 'beverage',
+    features: ['organic', 'fair-trade', 'sustainable', 'natural', 'healthy'],
+    price: 7,
+  },
+  {
+    name: 'Fair Trade Coffee',
+    type: 'beverage',
+    features: ['fair-trade', 'organic', 'sustainable', 'ethical', 'fresh'],
+    price: 9,
+  },
+  {
+    name: 'Fruit-infused Water',
+    type: 'beverage',
+    features: ['natural', 'sugar-free', 'healthy', 'refreshing', 'sustainable'],
+    price: 5,
+  },
+  {
+    name: 'Kombucha',
+    type: 'beverage',
+    features: ['probiotic', 'natural', 'sugar-free', 'healthy', 'sustainable'],
+    price: 6,
+  },
+  {
+    name: 'Plant-based Milk',
+    type: 'beverage',
+    features: ['vegan', 'sustainable', 'dairy-free', 'healthy', 'natural'],
+    price: 4,
+  },
+  {
+    name: 'Sugar-free Juice',
+    type: 'beverage',
+    features: ['sugar-free', 'natural', 'healthy', 'sustainable', 'fresh'],
+    price: 5,
+  },
+  {
+    name: 'Herbal Infusion',
+    type: 'beverage',
+    features: ['natural', 'organic', 'sustainable', 'healthy', 'caffeine-free'],
+    price: 6,
+  },
+  {
+    name: 'Low-carbon Wine',
+    type: 'beverage',
+    features: ['sustainable', 'organic', 'low-carbon', 'natural', 'local'],
+    price: 18,
+  },
+  {
+    name: 'Locally Brewed Beer',
+    type: 'beverage',
+    features: ['local', 'sustainable', 'craft', 'natural', 'fresh'],
+    price: 8,
+  },
+  {
+    name: 'Bottled Water in Glass',
+    type: 'beverage',
+    features: ['sustainable', 'recyclable', 'pure', 'natural', 'plastic-free'],
+    price: 3,
+  },
+  {
     name: 'Eco Laundry Detergent',
     type: 'detergent',
     features: ['vegan', 'biodegradable', 'local', 'plastic-free', 'chemical-free'],
@@ -313,6 +409,8 @@ const ProductRecommender = () => {
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string|null>(null);
+  const [lastRequestTime, setLastRequestTime] = useState<number>(0);
+  const RATE_LIMIT_MS = 1000; // 1 second between requests
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -322,7 +420,17 @@ const ProductRecommender = () => {
     e.preventDefault();
     setError(null);
     setLoading(true);
-    // Filter products
+
+    // Check rate limiting
+    const now = Date.now();
+    if (now - lastRequestTime < RATE_LIMIT_MS) {
+      setError('Please wait a moment before making another request.');
+      setLoading(false);
+      return;
+    }
+    setLastRequestTime(now);
+
+    // Filter products based on user input
     const featuresArr = inputs.features.split(',').map(f => f.trim().toLowerCase()).filter(Boolean);
     const filtered = PRODUCTS.filter(p => {
       const typeMatch = !inputs.type || p.type.toLowerCase().includes(inputs.type.toLowerCase());
@@ -330,7 +438,8 @@ const ProductRecommender = () => {
       const featuresMatch = featuresArr.every(f => p.features.includes(f));
       return typeMatch && priceMatch && featuresMatch;
     });
-    // For each product, get OpenAI description
+
+    // Get OpenAI descriptions for each product
     try {
       const described = await Promise.all(filtered.map(async (prod) => {
         const desc = await getOpenAIDescription(prod);
@@ -338,7 +447,7 @@ const ProductRecommender = () => {
       }));
       setResults(described);
     } catch (err) {
-      setError('Failed to get product descriptions.');
+      setError('Failed to get product descriptions. Please try again later.');
     }
     setLoading(false);
   };
@@ -363,12 +472,21 @@ const ProductRecommender = () => {
       });
       
       if (!res.ok) {
-        throw new Error(`API error: ${res.status}`);
+        const errorData = await res.json().catch(() => null);
+        if (res.status === 429) {
+          throw new Error('Rate limit exceeded. Please try again in a few moments.');
+        } else if (res.status === 401) {
+          throw new Error('Invalid API key. Please check your configuration.');
+        } else if (res.status === 402) {
+          throw new Error('Payment required. Please check your OpenAI account billing.');
+        } else {
+          throw new Error(`API Error: ${errorData?.error?.message || res.statusText}`);
+        }
       }
       
       const data = await res.json();
       if (!data.choices?.[0]?.message?.content) {
-        throw new Error('No content in response');
+        throw new Error('No content in API response');
       }
       
       return data.choices[0].message.content;

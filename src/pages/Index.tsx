@@ -33,7 +33,7 @@ const Index = () => {
               <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50" onClick={() => navigate('/goals')}>
                 Learn About The Goals
               </Button>
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
+              <Button size="lg" className="bg-green-900 text-white px-5 py-2 rounded hover:bg-green-800 transition" onClick={() => navigate('/chatbot')}>
                 Take Action
               </Button>
             </div>
@@ -151,6 +151,17 @@ const Index = () => {
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Take Action</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Button 
+                    className="bg-green-900 text-white hover:bg-green-800 transition" 
+                    variant="default" 
+                    onClick={() => navigate('/chatbot')}
+                  >
+                    Take Action
+                  </Button>
+                </li>
+              </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Stay Actual</h3>

@@ -150,18 +150,11 @@ const Index = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Take Action</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Button 
-                    className="bg-green-900 text-white hover:bg-green-800 transition" 
-                    variant="default" 
-                    onClick={() => navigate('/chatbot')}
-                  >
-                    Take Action
-                  </Button>
-                </li>
-              </ul>
+              <h3 className="text-lg font-semibold mb-4">
+                <Link to="/chatbot" className="text-gray-900 hover:text-green-700 transition">
+                  Take Action
+                </Link>
+              </h3>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Stay Actual</h3>

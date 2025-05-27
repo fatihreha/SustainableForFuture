@@ -31,6 +31,7 @@ import OurStory from './pages/OurStory';
 import Partners from './pages/Partners';
 import MediaLibrary from './pages/MediaLibrary';
 import Blueprint from './pages/Blueprint';
+import { Analytics } from "@vercel/analytics/react";
 
 const queryClient = new QueryClient();
 
@@ -78,6 +79,7 @@ const App = () => (
           <Route path="/blueprint" element={<Layout><Blueprint /></Layout>} />
           <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>
+        <Analytics />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

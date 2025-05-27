@@ -25,6 +25,11 @@ const Partners = () => {
       name: "Barış Gencer Baykan",
       role: "SUST301 Course Coordinator",
       linkedin: "https://www.linkedin.com/in/barisgencerbaykan"
+    },
+    {
+      name: "Yiğit Kaan Uzun",
+      role: "Presentator",
+      linkedin: "https://www.linkedin.com/in/yi%C4%9Fit-kaan-uzun-ba4a8a26a/"
     }
   ];
 

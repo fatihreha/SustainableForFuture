@@ -20,7 +20,9 @@ function calculateCO2e({ carKm, electricity, meat, flights, homeType }) {
   // Simple estimation formulas (for demo purposes)
   const car = Number(carKm) * 0.21 * 52; // 0.21 kg/km, 52 weeks
   const elec = Number(electricity) * 0.475 * 12; // 0.475 kg/kWh, 12 months
-  const meatKg = Number(meat) * 7 * 52 * 0.027; // 7 meals/week, 0.027 kg/meal
+  // meat is number of meat-based meals per week
+  // convert meals per week to annual kg CO2e
+  const meatKg = Number(meat) * 52 * 0.027; // 0.027 kg/meal
   const flight = Number(flights) * 250; // 250 kg/flight (short-medium haul)
   const home = 500 * (Number(homeType) || 1); // Home type multiplier
   return Math.round(car + elec + meatKg + flight + home);
